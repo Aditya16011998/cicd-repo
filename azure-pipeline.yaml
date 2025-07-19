@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - cicd-pipelines
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  MAVEN_OPTS: "-DmuleDeploy"
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean deploy'
+    options: >
+      -Danypoint.username=$(ANYPOINT_USERNAME)
+      -Danypoint.password=$(ANYPOINT_PASSWORD)
+      -Danypoint.environment=$(ANYPOINT_ENV)
+      -Dworker.type=$(WORKER_TYPE)
+  displayName: 'Build & Deploy to CloudHub'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'target'
+    ArtifactName: 'mule-artifact'
+    publishLocation: 'Container'
+  displayName: 'Publish Build Artifact'
+
