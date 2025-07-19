@@ -1,8 +1,12 @@
 pipeline {
   agent any
 
+  tools {
+    maven 'Maven3' // 👈 this should match the name from Global Tool Configuration
+  }
+
   environment {
-    ANYPOINT_CREDENTIALS = credentials('anypoint-credentials') // ID from Jenkins credentials
+    ANYPOINT_CREDENTIALS = credentials('anypoint-credentials')
     ANYPOINT_ENV = 'TESTING'
     WORKER_TYPE = 'Micro'
   }
@@ -21,4 +25,3 @@ pipeline {
     }
   }
 }
-
