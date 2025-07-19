@@ -31,16 +31,36 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<!-- <configuration> <cloudHubDeployment> <uri>https://anypoint.mulesoft.com</uri> 
+					<muleVersion>4.9-java17</muleVersion> <username>AdityaKaduskar</username> 
+					<password>16011998@January</password> <applicationName>git-cicd-test-app</applicationName> 
+					<environment>TESTING</environment> <workerType>Micro</workerType> </cloudHubDeployment> 
+					</configuration> -->
+
 				<configuration>
-					<cloudHubDeployment>
+					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>4.9-java17</muleVersion>
-						<username>AdityaKaduskar</username>
-						<password>16011998@January</password>
-						<applicationName>git-cicd-test-app</applicationName>
+						<provider>MC</provider>
+						<businessGroupId>cf705657-5e45-4b04-9ae3-04b6871033ff</businessGroupId>
 						<environment>TESTING</environment>
-						<workerType>Micro</workerType>
-					</cloudHubDeployment>
+						<target>privatespace-test</target>
+						<muleVersion>4.9.7:23-java17</muleVersion>
+						<username>${anypoint.username}</username>
+                        <password>${anypoint.password}</password>
+						<applicationName>git-cicd-test-app</applicationName>
+						<replicas>1</replicas>
+						<vCores>0.1</vCores>
+						<deploymentSettings>
+							<http>
+								<inbound>
+									<publicUrl>https://scheduler-test-app</publicUrl>
+									<forwardSslSession>true</forwardSslSession>
+									<lastMileSecurity>true</lastMileSecurity>
+									<pathRewrite>/aditya</pathRewrite>
+								</inbound>
+							</http>
+						</deploymentSettings>
+					</cloudhub2Deployment>
 				</configuration>
 			</plugin>
 		</plugins>
