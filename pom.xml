@@ -4,7 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>cf705657-5e45-4b04-9ae3-04b6871033ff</groupId>
+	<!--<groupId>cf705657-5e45-4b04-9ae3-04b6871033ff</groupId> -->   <!-- own org id -->
+	<groupId>709e9757-80fb-489c-8baf-2c6e1461c92c</groupId>           <!-- Shubham org id -->
 	<artifactId>git-cicd-test-app</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
@@ -41,12 +42,15 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<businessGroupId>cf705657-5e45-4b04-9ae3-04b6871033ff</businessGroupId>
-						<environment>TESTING</environment>
-						<target>privatespace-test</target>
-						<muleVersion>4.9.7:23-java17</muleVersion>
+						<!--<businessGroupId>cf705657-5e45-4b04-9ae3-04b6871033ff</businessGroupId> -->
+           				        <businessGroupId>709e9757-80fb-489c-8baf-2c6e1461c92c</businessGroupId>
+						<!--<environment>TESTING</environment>         -->
+						<environment>shubham-non-prod-env</environment>  	 <!-- Shubham org id -->  
+						<!--<target>privatespace-test</target> -->
+						<target>shubham-new-ps-testing</target>		       <!-- Shubham ps id -->  
+						<muleVersion>4.9.2:6-java17</muleVersion>
 						<username>${anypoint.username}</username>
-                        <password>${anypoint.password}</password>
+                        			<password>${anypoint.password}</password>
 						<applicationName>git-cicd-test-app</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
@@ -113,7 +117,8 @@
 		<repository>
 			<id>anypoint-exchange-v3</id>
 			<name>Corporate Repository</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/cf705657-5e45-4b04-9ae3-04b6871033ff/maven</url>
+			 <!--<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/cf705657-5e45-4b04-9ae3-04b6871033ff/maven</url> -->
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/709e9757-80fb-489c-8baf-2c6e1461c92c/maven</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
